@@ -1,0 +1,51 @@
+---
+import Section from "@/components/Section.astro";
+import { education } from "@cv";
+import { Image } from "astro:assets";
+import cert1 from "@/assets/img/web-certf.jpeg";
+import cert2 from "@/assets/img/js-certf.jpeg";
+import cert3 from "@/assets/img/react-certf.jpeg"; // Asegúrate de importar todas las imágenes que necesitas
+
+// Asocia las imágenes a los objetos en el array `education`
+const educationWithImages = education.map((item, index) => {
+    return {
+        ...item,
+        imgSrc: index === 0 ? cert1 : index === 1 ? cert2 : cert3 // Asigna imágenes dinámicamente
+    };
+});
+---
+
+<Section title="Certificaciones">
+    <div class="certContainer">
+        {
+            educationWithImages.map(({ imgSrc, area }) => { // Usa `educationWithImages` para asignar imágenes correctamente
+                return (
+                    <div class="cert">
+                        <Image
+                            src={imgSrc}
+                            alt={`Certificación de ${area}`}
+                            width="200"
+                            height="160"
+                        />
+                        <p>{area}</p>
+                    </div>
+                );
+            })
+        }
+    </div>
+</Section>
+
+<style>
+    .certContainer {
+        display: flex;
+    }
+
+    .cert {
+        height: 250px;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

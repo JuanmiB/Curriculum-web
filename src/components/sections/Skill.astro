@@ -1,0 +1,61 @@
+---
+import Section from "@/components/Section.astro";
+import HTML from "../icons/Html.astro";
+import CSS from "../icons/Css.astro";
+import JavaScript from "../icons/JavaScript.astro";
+import NodeJs from "../icons/NodeJs.astro";
+import MySQL from "../icons/Sql.astro";
+import Firebase from "../icons/Firebase.astro";
+import MongoDb from "../icons/MongoDb.astro";
+import React from "../icons/React.astro";
+import ReactNative from "../icons/ReactNative.astro";
+import Git from "../icons/Git.astro";
+import GitHub from "../icons/Github.astro";
+import Tailwind from "../icons/Tailwind.astro";
+import { skills } from "@cv";
+
+const SKILLS_ICONS: Record<string, any> = {
+  HTML,
+  CSS,
+  JavaScript,
+  React,
+  ReactNative,
+  NodeJs,
+  MySQL,
+  Firebase,
+  MongoDb,
+  Git,
+  GitHub,
+  Tailwind
+};
+---
+
+<Section title="Habilidades">
+  <ul>
+    {
+      skills.map(({ name }) => {
+        const Icon = SKILLS_ICONS[name];
+        return (
+          <li>
+            {Icon && <Icon />} <span>{name === 'ReactNative' ? 'React Native' : name}</span>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Section>
+
+<style>
+  ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+  }
+</style>

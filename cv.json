@@ -1,0 +1,288 @@
+{
+  "basics": {
+    "name": "Juan Miguel Bogado",
+    "label": "Full Stak Developer",
+    "image": "src/assets/img/avatar.png",
+    "email": "bogadojuanmiguel@gmail.com",
+    "phone": "(+54) 1139180630",
+    "url": "https://johndoe.com",
+    "summary": "Soy desarrollador fullstack, con habilidades tanto en el frontend como en el backend. A lo largo de mi trayectoria, he trabajado también como enfermero particular, lo que me permitió desarrollar una fuerte capacidad para el trabajo en equipo y el cuidado de los detalles en cada proyecto. \n\nEn mi tiempo libre, disfruto viendo anime y leyendo manga, actividades que encuentro tanto interesantes como entretenidas. También me gusta reunirme con amigos para practicar deportes como pádel y fútbol, lo cual me ayuda a mantener un buen equilibrio entre mis hobbies y mi vida profesional. Además, la cocina es algo que disfruto a diario, lo que me permite relajarme y desconectar de la rutina.",
+    "location": {
+      "address": "Caseros, Buenos Aires",
+      "postalCode": "1678",
+      "city": "Caseros",
+      "countryCode": "AR",
+      "region": "Argentina"
+    },
+    "profiles": [
+      {
+        "network": "X",
+        "username": "Juanmi_b",
+        "url": "https://twitter.com/juanmi_b"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "Juanmi_b",
+        "url": "https://twitter.com/juanmi_b"
+      },
+      {
+        "network": "GitHub",
+        "username": "Juanmi_b",
+        "url": "https://twitter.com/juanmi_b"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Municipio Tres de Febrero",
+      "position": "Enfermero",
+      "url": "https://company.com",
+      "startDate": "2021-01-01",
+      "endDate": "2023-03-01",
+      "summary": "Encargado de actividades en sector Enfermeria, Vacunatorio Calendario Nacional, Sector Covid",
+      "highlights": [
+        "Started the company"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Cruz Roja",
+      "url": "./assets/img/web-certf.jpeg",
+      "area": "Web Developer",
+      "studyType": "Bachelor",
+      "startDate": "2011-01-01",
+      "endDate": "2013-01-01",
+      "score": "4.0",
+      "courses": [
+        "DB1101 - Basic SQL"
+      ]
+    },
+    {
+      "institution": "Cruz Roja",
+      "url": "/assets/img/js-certf.jpeg",
+      "area": "JavaScript Developer",
+      "studyType": "Bachelor",
+      "startDate": "2011-01-01",
+      "endDate": "2013-01-01",
+      "score": "4.0",
+      "courses": [
+        "DB1101 - Basic SQL"
+      ]
+    },
+    {
+      "institution": "Cruz Roja",
+      "url": "/assets/img/react-certf.jpeg",
+      "area": "React Developer",
+      "studyType": "Bachelor",
+      "startDate": "2011-01-01",
+      "endDate": "2013-01-01",
+      "score": "4.0",
+      "courses": [
+        "DB1101 - Basic SQL"
+      ]
+    }
+  ],
+  "awards": [
+    {
+      "title": "Award",
+      "date": "2014-11-01",
+      "awarder": "Company",
+      "summary": "There is no spoon."
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Certificate",
+      "date": "2021-11-07",
+      "issuer": "Company",
+      "url": "https://certificate.com"
+    }
+  ],
+  "publications": [
+    {
+      "name": "Publication",
+      "publisher": "Company",
+      "releaseDate": "2014-10-01",
+      "url": "https://publication.com",
+      "summary": "Description…"
+    }
+  ],
+  "skills": [
+    {
+      "name": "HTML",
+      "level": "Master",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend"
+      ]
+    },
+    {
+      "name": "CSS",
+      "level": "Master",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "Diseño Responsive"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "level": "Master",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "Backend",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "React",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
+    },
+    {
+      "name": "Tailwind",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "CSS Framework",
+        "Diseño Responsive"
+      ]
+    },
+    {
+      "name": "NodeJs",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web",
+        "Backend",
+        "JavaScript",
+        "Servidor"
+      ]
+    },
+    {
+      "name": "MySQL",
+      "level": "Avanzado",
+      "keywords": [
+        "Bases de Datos",
+        "SQL",
+        "Almacenamiento de Datos",
+        "Backend"
+      ]
+    },
+    {
+      "name": "Git",
+      "level": "Avanzado",
+      "keywords": [
+        "Control de Versiones",
+        "Colaboración",
+        "Código Fuente"
+      ]
+    },
+    {
+      "name": "GitHub",
+      "level": "Avanzado",
+      "keywords": [
+        "Control de Versiones",
+        "Colaboración",
+        "Código Fuente",
+        "Git"
+      ]
+    },
+    {
+      "name": "ReactNative",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Mobile",
+        "Frontend"
+      ]
+    },
+    {
+      "name": "MongoDb",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
+    },
+    {
+      "name": "Firebase",
+      "level": "Avanzado",
+      "keywords": [
+        "Desarrollo Web",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Native speaker"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Wildlife",
+      "keywords": [
+        "Ferrets",
+        "Unicorns"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Jane Doe",
+      "reference": "Reference…"
+    }
+  ],
+  "projects": [
+    {
+      "name": "LitHouse",
+      "startDate": "2019-01-01",
+      "endDate": "2021-01-01",
+      "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit himenaeos inceptos ad tempor, enim ultricies penatibus mauris volutpat vehicula accumsan porttitor nulla justo blandit nascetur, eros neque taciti pulvinar vulputate per quis imperdiet scelerisque ligula. Arcu habitant fermentum non leo dictum aliquam vivamus tortor vitae, nam eros ad cras nibh cum placerat erat, nullam magna penatibus vel cursus metus per potenti.",
+      "highlights": [
+        "JavaScript",
+        "NodeJs",
+        "Tailwind",
+        "Pug"
+      ],
+      "url": "https://gifront.netlify.app/"
+    },
+    {
+      "name": "GiFont",
+      "startDate": "2019-01-01",
+      "endDate": "2021-01-01",
+      "description": "GiFront es una aplicación similar a Giphy que permite a los usuarios buscar y visualizar GIFs. Funciona como una plataforma para explorar contenido animado de manera rápida y visualmente atractiva. Al igual que Giphy, GiFront facilita la búsqueda, visualización y posiblemente la compartición de GIFs, proporcionando una experiencia interactiva y entretenida para los usuarios.",
+      "highlights": [
+        "React",
+        "JavaScript",
+        "CSS",
+        "MUI"
+      ],
+      "url": "https://project.com/"
+    },
+    {
+      "name": "OurManco",
+      "startDate": "2019-01-01",
+      "endDate": "2021-01-01",
+      "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit himenaeos inceptos ad tempor, enim ultricies penatibus mauris volutpat vehicula accumsan porttitor nulla justo blandit nascetur, eros neque taciti pulvinar vulputate per quis imperdiet scelerisque ligula. Arcu habitant fermentum non leo dictum aliquam vivamus tortor vitae, nam eros ad cras nibh cum placerat erat, nullam magna penatibus vel cursus metus per potenti.",
+      "highlights": [
+        "React",
+        "JavaScript",
+        "Tailwind"
+      ],
+      "url": "https://project.com/"
+    }
+  ]
+}
