@@ -5,15 +5,14 @@ import Email from '../icons/Email.astro'
 import Phone from '../icons/Phone.astro'
 import GitHub from '../icons/Github.astro'
 import LinkedIn from '../icons/LinkedIn.astro'
-import X from '../icons/X.astro'
+import Image from 'astro/components/Image.astro'
+import avatar from '@/assets/img/avatar.png';
 
-
-const {name, label, location, email, phone, profiles, image} = basics
-const {address, city, postalCode, region } = location
+const {name, label, small, location, email, phone, profiles} = basics
+const {address, city, region } = location
 
 const SOCIAL_ICONS: Record<string, any> = {
     GitHub,
-    X,
     LinkedIn
 }
 ---
@@ -23,6 +22,7 @@ const SOCIAL_ICONS: Record<string, any> = {
         <div class="info">
             <h1>{name}</h1>
             <h2>{label}</h2>
+            <small>{small}</small>
             <span>
                 <!-- Colocar Iconos -->
                 {city}, {address}, {region}
@@ -53,7 +53,7 @@ const SOCIAL_ICONS: Record<string, any> = {
                     )
                   }
                   {
-                    profiles.map(({ network, url, username }) => {
+                    profiles.map(({ network, url }) => {
                       const Icon = SOCIAL_ICONS[network]
           
                       return (
@@ -70,10 +70,17 @@ const SOCIAL_ICONS: Record<string, any> = {
                   }
             </footer>
             </div>
-            <figure>
-                <img src={image} alt={name} width="150">
-
-            </figure>
+            <div>
+              <Image 
+              src={avatar} 
+              alt={`Foto de ${name}`} 
+              width={300} 
+              height={200} 
+              style={{ borderRadius: '50%', objectFit: 'cover', aspectRatio: '1/1' }} 
+              quality={"max"}
+              densities={[1.5, 2]}
+              />
+            </div>
 
         </div>
 </Section>
@@ -89,7 +96,7 @@ const SOCIAL_ICONS: Record<string, any> = {
     .info {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      
       padding-right: 32px;
     }
   
@@ -102,6 +109,16 @@ const SOCIAL_ICONS: Record<string, any> = {
       font-weight: 500;
       font-size: 1.1rem;
       text-wrap: balance;
+      margin-bottom: 0px;
+    }
+    small{
+      margin-bottom: 15px;
+      color: #444;
+      opacity: 0.8;
+    }
+    small:hover{
+      opacity: 1;
+      padding-left: 4px;
     }
   
     img {
@@ -118,6 +135,7 @@ const SOCIAL_ICONS: Record<string, any> = {
       gap: 0.25rem;
       font-size: 0.85rem;
       letter-spacing: -0.05rem;
+      margin-bottom: 15px;
     }
   
     footer {
@@ -158,17 +176,11 @@ const SOCIAL_ICONS: Record<string, any> = {
         text-align: center;
       }
   
-      figure {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-  
       h2 {
         text-wrap: balance;
       }
   
-      figure {
+      div {
         margin: 0 auto;
       }
     }
