@@ -170,7 +170,7 @@
       ],
       "url": "https://proyecto-estandar.netlify.app/",
       "repository-url": "https://github.com/tuusuario/proyecto-estandar",
-      "image": "https://i.imgur.com/3Z1b4kH.png"
+      "image": "./src/assets/img/nucleus-landing-web.png"
     },
     {
       "name": "Dental Clinical",
@@ -182,7 +182,7 @@
       ],
       "url": "https://dental-clinical.netlify.app/",
       "repository-url": "https://github.com/tuusuario/dental-clinical",
-      "image": "https://i.imgur.com/3Z1b4kH.png"
+      "image": "./src/assets/img/dental-clinic.png"
     },
     {
       "name": "Task Manager - Proyecto de UADE",
