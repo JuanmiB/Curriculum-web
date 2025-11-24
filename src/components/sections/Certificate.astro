@@ -1,98 +1,29 @@
 ---
 import Section from "@/components/Section.astro";
-import { education } from "@cv";
+import CertGallery from "@/components/CertGallery.jsx";
+import { certificates } from "@cv";
 import { Image } from "astro:assets";
 import cert1 from "@/assets/img/web-certf.jpeg";
 import cert2 from "@/assets/img/js-certf.jpeg";
 import cert3 from "@/assets/img/react-certf.jpeg"; // Asegúrate de importar todas las imágenes que necesitas
+import cert4 from "@/assets/img/java-certf.png"; 
+
 
 // Asocia las imágenes a los objetos en el array `education`
-const educationWithImages = education.map((item, index) => {
+const certificatesWithImages = certificates.map((item, index) => {
     return {
         ...item,
-        imgSrc: index === 0 ? cert1 : index === 1 ? cert2 : cert3, // Asigna imágenes dinámicamente
+        imgSrc:
+            index === 0 ? cert1 :
+            index === 1 ? cert2 :
+            index === 2 ? cert3 :
+            cert4, // Agrega cert4 para el cuarto índice
     };
 });
 ---
 
 <Section title="Certificaciones">
-    <div class="certContainer">
-        {
-            educationWithImages.map(({ imgSrc, area }) => {
-                // Usa `educationWithImages` para asignar imágenes correctamente
-                return (
-                    <div class="cert">
-                        <Image
-                            src={imgSrc}
-                            alt={`Certificación de ${area}`}
-                            width={220}
-                            style={{ objectPosition: "contain" }}
-                            quality={"max"}
-                            densities={[1.5, 2]}
-                        />
-                        <p>{area}</p>
-                    </div>
-                );
-            })
-        }
-    </div>
+  <CertGallery client:load items={certificatesWithImages} />
 </Section>
+   
 
-<style>
-    .certContainer {
-        display: flex;
-    }
-
-    .cert {
-        height: 250px;
-        width: 250px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    p {
-        color: #333; /* Color del texto */
-        position: relative;
-    }
-    p::after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 3px;
-            background-image: linear-gradient(
-                90deg,
-                #ed41fc,
-                #ffa500,
-                #ffff00
-            );
-            bottom: -5px;
-            transform: translateX(-100%); /* Para centrar la línea */
-            transition: width 0.4s ease;
-        }
-
-    @media (min-width: 768px) {
-        p::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 3px;
-            background-image: linear-gradient(
-                90deg,
-                #ed41fc,
-                #ffa500,
-                #ffff00
-            ); /* Gradiente: rosa chicle, naranja, amarillo */
-            left: 50%; /* La línea comienza desde el centro del enlace */
-            bottom: -5px;
-            transform: translateX(-50%); /* Para centrar la línea */
-            transition: width 0.4s ease;
-        }
-        p:hover::after {
-            width: 100%; /* La línea se expande a todo el ancho del texto */
-            left: 0; /* Mueve la línea desde el centro a toda la anchura */
-            transform: translateX(0);
-        }
-    }
-</style>

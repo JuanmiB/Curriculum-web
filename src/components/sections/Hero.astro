@@ -7,8 +7,9 @@ import GitHub from '../icons/Github.astro'
 import LinkedIn from '../icons/LinkedIn.astro'
 import Image from 'astro/components/Image.astro'
 import avatar from '@/assets/img/avatar.png';
+import Cv from '../icons/Cv.astro'
 
-const {name, label, small, location, email, phone, profiles} = basics
+const {name, label, small, location, email, phone, profiles, cv} = basics
 const {address, city, region } = location
 
 const SOCIAL_ICONS: Record<string, any> = {
@@ -22,11 +23,8 @@ const SOCIAL_ICONS: Record<string, any> = {
         <div class="info">
             <h1>{name}</h1>
             <h2>{label}</h2>
-            <small>{small}</small>
-            <span>
-                <!-- Colocar Iconos -->
-                {city}, {address}, {region}
-            </span>
+           
+          
             <footer>
                 {
                     email && (
@@ -41,14 +39,13 @@ const SOCIAL_ICONS: Record<string, any> = {
                     )
                   }
                   {
-                    phone && (
-                      <a
-                        href={`tel:${phone}`}
-                        title={`Llamar por teléfono a ${name} al número ${phone}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Phone />
+                    cv && (
+                    <a
+      href="/documents/cv-2025.pdf"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+                        <Cv />
                       </a>
                     )
                   }
@@ -62,6 +59,8 @@ const SOCIAL_ICONS: Record<string, any> = {
                           title={`Visitar el perfil de ${name} en ${network}`}
                           target="_blank"
                           rel="noopener noreferrer"
+                        
+                  
                         >
                           <Icon />
                         </a>

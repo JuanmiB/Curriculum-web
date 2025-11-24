@@ -1,0 +1,39 @@
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-fadein {
+  animation: fadein 0.3s ease;
+}
+@import "tailwindcss";
+
+@keyframes modal-fadein-up {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-modal-fadein-up {
+  animation: modal-fadein-up 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('/fonts/Helvetica.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Helvetica', Arial, sans-serif;
+}

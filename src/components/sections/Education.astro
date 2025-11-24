@@ -1,0 +1,52 @@
+---
+import Section from "../Section.astro";
+import { education } from "@cv";
+import logoUade from "@/assets/img/uade-logo.webp";
+import logoCruzRoja from "@/assets/img/cruz-roja-logo.webp";
+
+const educationWithLogos = education.map((item, index) => {
+    let logoSrc = null;
+
+    // Asigna la imagen del logo según el índice
+    if (index === 0) {
+        logoSrc = logoUade;
+    } else if (index === 1) {
+        logoSrc = logoCruzRoja;
+    }
+
+    return {
+        ...item,
+        logoSrc,
+    };
+});
+
+
+---
+<Section title="Educación">
+    <div class="flex flex-col gap-6 py-4">
+        {
+            educationWithLogos.map(({ logoSrc, institution, area, studyType, startDate, endDate }, idx) => {
+                // UADE: idx === 0, Cruz Roja: idx === 1
+                let hoverClass = "hover:bg-gray-100 hover:border-gray-300";
+                if (idx === 0) hoverClass = "hover:bg-blue-300 hover:border-blue-400";
+                if (idx === 1) hoverClass = "hover:bg-red-100 hover:border-red-400";
+                return (
+                    <div class={`flex flex-col md:flex-row items-start md:items-center gap-4 p-5 border border-gray-200 rounded-xl shadow-sm transition-colors duration-200 cursor-pointer ${hoverClass}`}>
+                        {logoSrc && (
+                            <img
+                                src={logoSrc.src}
+                                alt={`Logo de ${institution}`}
+                                class="w-16 h-16 rounded-full object-contain border border-gray-300"
+                            />
+                        )}
+                        <div class="flex flex-col">
+                            <h3 class="text-lg font-semibold text-gray-800">{institution}</h3>
+                            <p class="text-sm text-gray-600">{area} - {studyType}</p>
+                            <p class="text-sm text-gray-500">{startDate} – {endDate}</p>
+                        </div>
+                    </div>
+                );
+            })
+        }
+    </div>
+</Section>

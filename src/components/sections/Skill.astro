@@ -30,32 +30,78 @@ const SKILLS_ICONS: Record<string, any> = {
 };
 ---
 
+
 <Section title="Habilidades">
-  <ul>
-    {
-      skills.map(({ name }) => {
-        const Icon = SKILLS_ICONS[name];
-        return (
-          <li>
-            {Icon && <Icon />} <span>{name === 'ReactNative' ? 'React Native' : name}</span>
-          </li>
-        );
-      })
-    }
-  </ul>
+  <div class="skills-grid">
+
+    {Object.entries(skills).map(([category, skillList]) => {
+      const formattedCategory = category
+        .replace(/([A-Z])/g, " $1")
+        .trim()
+        .replace(/^./, (c) => c.toUpperCase());
+
+      return (
+        <div class="skill-card" key={category}>
+          <h4 class="category-title">{formattedCategory}</h4>
+
+          <ul class="skill-list">
+            {skillList.map((name) => {
+              const Icon = SKILLS_ICONS[name];
+
+              return (
+                <li class="skill-item" key={name}>
+                  {Icon && <Icon class="skill-icon" />}
+                  <span>{name === "ReactNative" ? "React Native" : name}</span>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    })}
+
+  </div>
 </Section>
 
 <style>
-  ul {
+  .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
   }
-  li {
+
+  .skill-card {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #e3e3e3;
+    background: #fafafa;
+  }
+
+  .category-title {
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .skill-list {
+    padding: 0;
+    margin: 0;
     list-style: none;
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    gap: 6px;
+  }
 
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+  }
+
+  .skill-icon {
+    width: 18px;
+    height: 18px;
   }
 </style>
