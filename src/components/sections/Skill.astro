@@ -39,7 +39,7 @@ const SKILLS_ICONS: Record<string, any> = {
         .replace(/^./, (c) => c.toUpperCase());
 
       return (
-        <div class="skill-card" key={category}>
+        <div class="skill-card" >
           <h4 class="category-title">
             <span class="bar"></span>{formattedCategory}
           </h4>
@@ -48,7 +48,7 @@ const SKILLS_ICONS: Record<string, any> = {
             {skillList.map((name) => {
               const Icon = SKILLS_ICONS[name];
               return (
-                <li class="skill-item" key={name}>
+                <li class="skill-item" >
                   <div class="icon-chip">{Icon && <Icon class="skill-icon" />}</div>
                   <span>{name === "ReactNative" ? "React Native" : name}</span>
                 </li>

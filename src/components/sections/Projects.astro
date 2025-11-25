@@ -5,7 +5,7 @@ import { projects } from "@cv";
 
 <Section title="Proyectos">
 <ul class="grid gap-8 lg:grid-cols-2 p-0">
-  {projects.map(({ url, repo, description, name, image, highlights }) => (
+  {projects.map(({ url, description, name, image }) => (
     <li class="list-none group relative overflow-hidden rounded-xl shadow-md border border-gray-200 hover:shadow-xl transition-all duration-300">
       <img
         src={image}
@@ -20,11 +20,7 @@ import { projects } from "@cv";
           <a href={url} target="_blank" rel="noopener" class="bg-white text-black text-xs font-semibold px-3 py-1 rounded-md hover:bg-gray-200 transition">
             🌐 Ver sitio
           </a>
-          {repo && (
-            <a href={repo} target="_blank" rel="noopener" class="border border-white text-xs font-semibold px-3 py-1 rounded-md hover:bg-white hover:text-black transition">
-              💻 Repositorio
-            </a>
-          )}
+      
         </div>
       </div>
     </li>
