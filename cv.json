@@ -145,7 +145,7 @@
       ],
       "url": "https://bienesraices-react.netlify.app/",
       "repository-url": "https://github.com/tuusuario/bienesraices",
-      "image": "src/assets/img/foto-bienesraices-app-2.png"
+      "image": "bienesraices.png"
     },
     {
       "name": "GiFont",
@@ -158,7 +158,7 @@
       ],
       "url": "https://gifront.netlify.app/",
       "repository-url": "https://github.com/tuusuario/gifont",
-      "image": "src/assets/img/gifront-foto-1.png"
+      "image": "gifront.png"
     },
     {
       "name": "Proyecto Estandar: Nucleus",
@@ -170,7 +170,7 @@
       ],
       "url": "https://proyecto-estandar.netlify.app/",
       "repository-url": "https://github.com/tuusuario/proyecto-estandar",
-      "image": "src/assets/img/nucleus-landing-web.png"
+      "image": "nucleus.png"
     },
     {
       "name": "Dental Clinical",
@@ -182,7 +182,7 @@
       ],
       "url": "https://dental-clinical.netlify.app/",
       "repository-url": "https://github.com/tuusuario/dental-clinical",
-      "image": "src/assets/img/dental-clinic.png"
+      "image": "dental-clinic.png"
     },
     {
       "name": "Task Manager - Proyecto de UADE",
