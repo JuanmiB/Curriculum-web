@@ -7,7 +7,6 @@ import logoCruzRoja from "@/assets/img/cruz-roja-logo.webp";
 const educationWithLogos = education.map((item, index) => {
     let logoSrc = null;
 
-    // Asigna la imagen del logo según el índice
     if (index === 0) {
         logoSrc = logoUade;
     } else if (index === 1) {
@@ -19,34 +18,362 @@ const educationWithLogos = education.map((item, index) => {
         logoSrc,
     };
 });
-
-
 ---
-<Section title="Educación">
-    <div class="flex flex-col gap-6 py-4">
-        {
-            educationWithLogos.map(({ logoSrc, institution, area, studyType, startDate, endDate }, idx) => {
-                // UADE: idx === 0, Cruz Roja: idx === 1
-                let hoverClass = "hover:bg-gray-100 hover:border-gray-300";
-                if (idx === 0) hoverClass = "hover:bg-blue-300 hover:border-blue-400";
-                if (idx === 1) hoverClass = "hover:bg-red-100 hover:border-red-400";
-                return (
-                    <div class={`flex flex-col md:flex-row items-start md:items-center gap-4 p-5 border border-gray-200 rounded-xl shadow-sm transition-colors duration-200 cursor-pointer ${hoverClass}`}>
-                        {logoSrc && (
-                            <img
-                                src={logoSrc.src}
-                                alt={`Logo de ${institution}`}
-                                class="w-16 h-16 rounded-full object-contain border border-gray-300"
-                            />
-                        )}
-                        <div class="flex flex-col">
-                            <h3 class="text-lg font-semibold text-gray-800">{institution}</h3>
-                            <p class="text-sm text-gray-600">{area} - {studyType}</p>
-                            <p class="text-sm text-gray-500">{startDate} – {endDate}</p>
+
+<Section title="Educación" id="education">
+    <div class="education-timeline">
+        {educationWithLogos.map((edu, idx) => {
+            const isEven = idx % 2 === 0;
+
+            return (
+                <div class={`timeline-item ${isEven ? 'timeline-item-left' : 'timeline-item-right'}`}>
+                    <!-- Timeline dot y línea -->
+                    <div class="timeline-marker">
+                        <div class="timeline-dot">
+                            <div class="timeline-dot-inner"></div>
                         </div>
+                        {idx < educationWithLogos.length - 1 && (
+                            <div class="timeline-line"></div>
+                        )}
                     </div>
-                );
-            })
-        }
+
+                    <!-- Card de educación -->
+                    <div class="education-card" data-index={idx}>
+                        <!-- Badge de periodo -->
+                        <div class="education-period">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            <span>{edu.startDate} – {edu.endDate}</span>
+                        </div>
+
+                        <!-- Contenido principal -->
+                        <div class="education-content">
+                            {edu.logoSrc && (
+                                <div class="education-logo-wrapper">
+                                    <div class="logo-glow"></div>
+                                    <img
+                                        src={edu.logoSrc.src}
+                                        alt={`Logo de ${edu.institution}`}
+                                        class="education-logo"
+                                    />
+                                </div>
+                            )}
+
+                            <div class="education-info">
+                                <h3 class="education-institution">
+                                    {edu.institution}
+                                    <svg class="verified-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                </h3>
+                                <p class="education-degree">{edu.area}</p>
+                                <div class="education-badge">{edu.studyType}</div>
+                            </div>
+                        </div>
+
+                        <!-- Decorative corner -->
+                        <div class="card-corner"></div>
+                    </div>
+                </div>
+            );
+        })}
     </div>
 </Section>
+
+<style>
+    .education-timeline {
+        position: relative;
+        margin-top: 3rem;
+        padding: 0 1rem;
+    }
+
+    @media (min-width: 768px) {
+        .education-timeline {
+            padding: 0 2rem;
+        }
+    }
+
+    /* Timeline Item */
+    .timeline-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    @media (max-width: 767px) {
+        .timeline-item {
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+        }
+    }
+
+    /* Timeline Marker */
+    .timeline-marker {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        grid-column: 2;
+    }
+
+    @media (max-width: 767px) {
+        .timeline-marker {
+            grid-column: 1;
+        }
+    }
+
+    .timeline-dot {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-500));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 0 4px var(--color-bg), 0 0 20px rgba(139, 92, 246, 0.4);
+        z-index: 2;
+        flex-shrink: 0;
+    }
+
+    .timeline-dot-inner {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: white;
+        animation: pulse-timeline 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-timeline {
+        0%, 100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 0.8;
+        }
+    }
+
+    .timeline-line {
+        width: 2px;
+        flex: 1;
+        background: linear-gradient(
+            to bottom,
+            var(--color-primary-400),
+            var(--color-primary-200)
+        );
+        margin-top: 0.5rem;
+    }
+
+    .dark .timeline-line {
+        background: linear-gradient(
+            to bottom,
+            var(--color-primary-700),
+            var(--color-primary-900)
+        );
+    }
+
+    /* Education Card */
+    .education-card {
+        position: relative;
+        background: var(--color-bg);
+        border: 2px solid var(--color-border);
+        border-radius: var(--radius-2xl);
+        padding: 1.75rem;
+        box-shadow: var(--shadow-lg);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow: hidden;
+    }
+
+    .timeline-item-left .education-card {
+        grid-column: 1;
+    }
+
+    .timeline-item-right .education-card {
+        grid-column: 3;
+    }
+
+    @media (max-width: 767px) {
+        .timeline-item-left .education-card,
+        .timeline-item-right .education-card {
+            grid-column: 2;
+        }
+    }
+
+    .education-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: var(--shadow-2xl);
+        border-color: var(--color-primary-400);
+    }
+
+    .dark .education-card {
+        background: var(--color-neutral-900);
+    }
+
+    .dark .education-card:hover {
+        border-color: var(--color-primary-600);
+    }
+
+    /* Period Badge */
+    .education-period {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: linear-gradient(135deg, var(--color-primary-100), var(--color-accent-100));
+        border: 1px solid var(--color-primary-300);
+        border-radius: var(--radius-full);
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--color-primary-700);
+        margin-bottom: 1.25rem;
+        width: fit-content;
+    }
+
+    .dark .education-period {
+        background: linear-gradient(135deg, var(--color-primary-900), var(--color-accent-900));
+        border-color: var(--color-primary-700);
+        color: var(--color-primary-300);
+    }
+
+    /* Content */
+    .education-content {
+        display: flex;
+        gap: 1.25rem;
+        align-items: flex-start;
+    }
+
+    @media (max-width: 640px) {
+        .education-content {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+    }
+
+    /* Logo */
+    .education-logo-wrapper {
+        position: relative;
+        flex-shrink: 0;
+    }
+
+    .logo-glow {
+        position: absolute;
+        inset: -8px;
+        background: linear-gradient(135deg, var(--color-primary-400), var(--color-accent-400));
+        border-radius: 50%;
+        filter: blur(12px);
+        opacity: 0.3;
+        animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    .education-logo {
+        position: relative;
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        object-fit: contain;
+        background: white;
+        padding: 0.5rem;
+        border: 3px solid var(--color-border);
+        box-shadow: var(--shadow-md);
+    }
+
+    /* Info */
+    .education-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.625rem;
+    }
+
+    .education-institution {
+        font-size: 1.375rem;
+        font-weight: var(--font-weight-bold);
+        color: var(--color-text);
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        line-height: 1.3;
+    }
+
+    @media (max-width: 640px) {
+        .education-institution {
+            justify-content: center;
+        }
+    }
+
+    .verified-icon {
+        color: var(--color-primary-500);
+        flex-shrink: 0;
+    }
+
+    .education-degree {
+        font-size: 1rem;
+        color: var(--color-text-secondary);
+        font-weight: 500;
+        margin: 0;
+    }
+
+    .education-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.375rem 0.875rem;
+        background: var(--color-bg-secondary);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--color-text);
+        width: fit-content;
+    }
+
+    @media (max-width: 640px) {
+        .education-badge {
+            margin: 0 auto;
+        }
+    }
+
+    /* Decorative Corner */
+    .card-corner {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, transparent 50%, var(--color-primary-100) 50%);
+        border-radius: 0 var(--radius-2xl) 0 0;
+        opacity: 0.5;
+    }
+
+    .dark .card-corner {
+        background: linear-gradient(135deg, transparent 50%, var(--color-primary-900) 50%);
+    }
+
+    /* Animación de entrada */
+    .timeline-item {
+        animation: fadeInScale 0.6s ease-out backwards;
+    }
+
+    @keyframes fadeInScale {
+        from {
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+    .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+    .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+</style>

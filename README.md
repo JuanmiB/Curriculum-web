@@ -1,54 +1,213 @@
-# Astro Starter Kit: Basics
+# 🚀 Portfolio Personal - Juan Miguel Bogado
 
-```sh
-npm create astro@latest -- --template basics
-```
+Portfolio profesional moderno construido con Astro 5, React 19 y Tailwind CSS 4. Diseñado para mostrar proyectos, habilidades y experiencia de manera atractiva y accesible.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+![Astro](https://img.shields.io/badge/Astro-5.15.3-FF5D01?logo=astro)
+![React](https://img.shields.io/badge/React-19.1.0-61DAFB?logo=react)
+![Tailwind](https://img.shields.io/badge/Tailwind-4.1.11-38B2AC?logo=tailwindcss)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.5.4-3178C6?logo=typescript)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## ✨ Características
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+### 🎨 Diseño Moderno
+- **Hero section impactante** con gradientes animados y CTAs prominentes
+- **Cards de proyectos mejoradas** con tech badges, gradient overlays y múltiples acciones
+- **Animaciones suaves** con fade-in on scroll (Intersection Observer API)
+- **Diseño responsive** mobile-first con breakpoints estandarizados
 
-## 🚀 Project Structure
+### 🌓 Dark Mode
+- Toggle de tema con persistencia en localStorage
+- Soporte para `prefers-color-scheme`
+- Sin flash al cargar (script inline de inicialización)
+- Transiciones suaves entre temas
+- Todas las secciones optimizadas para dark mode
 
-Inside of your Astro project, you'll see the following folders and files:
+### 🎯 Sistema de Diseño
+- **Paleta de colores** consistente con variables CSS
+- **Escala tipográfica** profesional
+- **Espaciado** y **border radius** estandarizados
+- **Sombras** y **transiciones** definidas
+
+### ♿ Accesibilidad
+- Skip-to-content link
+- ARIA labels en elementos interactivos
+- Contraste WCAG AA
+- Focus states visibles
+- Soporte para `prefers-reduced-motion`
+
+### 📱 Responsive
+- Mobile-first approach
+- Breakpoints: 640px (sm), 768px (md), 1024px (lg), 1280px (xl)
+- Touch-friendly (mínimo 44x44px)
+- Optimizado para todas las pantallas
+
+### 🎬 Animaciones
+- Fade-in on scroll automático
+- Gradiente de fondo animado en Hero
+- Formas decorativas con animación float
+- Hover effects sutiles en cards
+- Transiciones suaves globales
+
+## 🗂️ Estructura del Proyecto
 
 ```text
-/
-├── public/
-│   └── favicon.svg
+portfolio-json/
 ├── src/
+│   ├── assets/
+│   │   ├── img/          # Imágenes (avatar, logos)
+│   │   └── projects/     # Screenshots de proyectos
 │   ├── components/
-│   │   └── Card.astro
+│   │   ├── icons/        # Iconos SVG
+│   │   ├── sections/     # Secciones del portfolio
+│   │   │   ├── Hero.astro
+│   │   │   ├── About.astro
+│   │   │   ├── Projects.astro
+│   │   │   ├── Skills.astro
+│   │   │   ├── Education.astro
+│   │   │   └── Certificate.astro
+│   │   ├── AnimatedSection.astro
+│   │   ├── DarkModeToggle.astro
+│   │   └── Section.astro
 │   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   │   └── Layout.astro  # Layout principal
+│   ├── pages/
+│   │   └── index.astro   # Página principal
+│   ├── stores/
+│   │   └── theme.js      # Store de nanostores para tema
+│   ├── styles/
+│   │   └── global.css    # Estilos globales y variables
+│   └── utils/
+│       └── animations.ts # Utilidades de animación
+├── public/
+│   ├── documents/        # CV en PDF
+│   └── fonts/           # Fuentes personalizadas
+├── cv.json              # Datos del portfolio
+└── astro.config.mjs
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠️ Stack Tecnológico
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- **Framework:** Astro 5.15.3
+- **UI Library:** React 19.1.0
+- **Styling:** Tailwind CSS 4.1.11
+- **Language:** TypeScript 5.5.4
+- **State:** Nanostores (dark mode)
+- **Animations:** CSS + Intersection Observer API
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 📋 Comandos
 
-## 🧞 Commands
+```bash
+# Instalar dependencias
+npm install
 
-All commands are run from the root of the project, from a terminal:
+# Servidor de desarrollo (http://localhost:4321)
+npm run dev
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+# Construir para producción
+npm run build
 
-## 👀 Want to learn more?
+# Preview de producción
+npm run preview
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+# Type checking
+npm run astro check
+```
+
+## 📝 Configuración
+
+### cv.json
+
+Todos los datos del portfolio se centralizan en `cv.json`:
+
+```json
+{
+  "basics": {
+    "name": "Tu Nombre",
+    "label": "Tu Título",
+    "email": "email@example.com",
+    "summary": "Tu descripción...",
+    "profiles": [...]
+  },
+  "projects": [
+    {
+      "name": "Nombre del Proyecto",
+      "description": "Descripción...",
+      "highlights": ["react", "nodejs", "postgresql"],
+      "url": "https://...",
+      "repository-url": "https://github.com/...",
+      "image": "proyecto.png"
+    }
+  ],
+  "skills": {...},
+  "education": [...],
+  "certificates": [...]
+}
+```
+
+### Personalización de Colores
+
+Edita `src/styles/global.css` para cambiar la paleta:
+
+```css
+@theme {
+  --color-primary-500: #8b5cf6;  /* Color principal */
+  --color-accent-500: #06b6d4;   /* Color de acento */
+  /* ... más colores ... */
+}
+```
+
+## 🎨 Características Destacadas
+
+### Tech Badges con Colores
+
+Los proyectos muestran badges de tecnologías con colores específicos:
+- React: `#61dafb`
+- Node.js: `#68a063`
+- PostgreSQL: `#336791`
+- Tailwind: `#06b6d4`
+- Y más...
+
+### Animaciones de Scroll
+
+Todas las secciones se animan automáticamente al entrar en viewport:
+
+```astro
+<Section title="Mi Sección">
+  <!-- El contenido se anima automáticamente -->
+</Section>
+```
+
+### Dark Mode Automático
+
+El toggle de dark mode se muestra en la esquina superior derecha y persiste la preferencia del usuario.
+
+## 🚀 Deployment
+
+Este proyecto está listo para deployarse en:
+
+- **Vercel** (recomendado)
+- **Netlify**
+- **GitHub Pages**
+- **Cloudflare Pages**
+
+```bash
+# Build
+npm run build
+
+# La carpeta dist/ contiene los archivos estáticos
+```
+
+## 📄 Licencia
+
+Este proyecto es de código abierto y está disponible bajo la licencia MIT.
+
+## 👤 Autor
+
+**Juan Miguel Bogado**
+- LinkedIn: [Juan Miguel Bogado](https://www.linkedin.com/in/juan-miguel-bogado/)
+- GitHub: [@JuanmiB](https://github.com/JuanmiB)
+- Email: bogadojuanmiguel@gmail.com
+
+---
+
+**Desarrollado con ❤️ usando Astro + React + Tailwind**

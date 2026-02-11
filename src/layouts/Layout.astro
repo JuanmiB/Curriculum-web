@@ -1,44 +1,175 @@
 ---
 import '../styles/global.css';
+import DarkModeToggle from '../components/DarkModeToggle.astro';
+
 interface Props {
 	title: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title,
+	description = "Portfolio personal de MikiTamer - Desarrollador Full Stack"
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/logo.svg" />
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- SEO Meta Tags -->
+		<meta name="author" content="Juan Miguel Bogado" />
+		<meta name="keywords" content="desarrollador, full stack, portfolio, web development, react, node.js, javascript, frontend, backend" />
+		<meta name="robots" content="index, follow" />
+		<meta name="language" content="Spanish" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:site_name" content="Portfolio Juan Miguel Bogado" />
+		<meta property="og:locale" content="es_AR" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+
+		<!-- Theme Color -->
+		<meta name="theme-color" content="#8b5cf6" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)" />
+
 		<title>{title}</title>
+
+		<!-- Script inline para evitar flash de tema (DEBE estar antes del body) -->
+		<script is:inline>
+			(function() {
+				const savedTheme = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+
+				if (shouldBeDark) {
+					document.documentElement.classList.add('dark');
+				}
+			})();
+		</script>
 	</head>
 	<body>
-		<slot />
+		<!-- Skip to main content link for accessibility -->
+		<a href="#main-content" class="skip-to-content">
+			Saltar al contenido principal
+		</a>
+
+		<!-- Dark Mode Toggle - Fixed Position -->
+		<div class="dark-mode-toggle-container">
+			<DarkModeToggle />
+		</div>
+
+		<!-- Main Content -->
+		<div id="main-content">
+			<slot />
+		</div>
+
+		<!-- Script de animaciones de scroll -->
+		<script>
+			import { initScrollAnimations, prefersReducedMotion } from '../utils/animations';
+
+			// Inicializar animaciones cuando el DOM esté listo
+			function initAnimations() {
+				// Si el usuario prefiere reducir movimiento, hacer elementos visibles inmediatamente
+				if (prefersReducedMotion()) {
+					const elements = document.querySelectorAll('[data-animate]');
+					elements.forEach((el) => {
+						el.classList.add('animate-visible');
+					});
+					return;
+				}
+
+				// Inicializar observador de scroll para todos los elementos con data-animate
+				initScrollAnimations('[data-animate]');
+			}
+
+			// Ejecutar al cargar la página
+			if (document.readyState === 'loading') {
+				document.addEventListener('DOMContentLoaded', initAnimations);
+			} else {
+				initAnimations();
+			}
+		</script>
 	</body>
 </html>
 <!-- Estilos Globales -->
 <style is:global>
 	html {
-	
-		background: #cacaca;
+		background-color: var(--color-bg);
+		color: var(--color-text);
 		letter-spacing: -0.025rem;
-      scrollbar-width: none;  
-
-
+		scrollbar-width: thin;
+		scrollbar-color: var(--color-neutral-400) var(--color-neutral-100);
 	}
-	
-	body{
 
-		@media(max-width: 786px) {
+	html.dark {
+		scrollbar-color: var(--color-neutral-600) var(--color-neutral-900);
+	}
+
+	body {
+		min-height: 100vh;
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+	}
+
+	/* Skip to content link for accessibility */
+	.skip-to-content {
+		position: absolute;
+		top: -100px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 10000;
+		padding: 1rem 2rem;
+		background: var(--color-primary-600);
+		color: white;
+		text-decoration: none;
+		border-radius: var(--radius-md);
+		font-weight: var(--font-weight-semibold);
+		box-shadow: var(--shadow-xl);
+		transition: top var(--transition-base);
+	}
+
+	.skip-to-content:focus {
+		top: 1rem;
+	}
+
+	/* Dark mode toggle - Floating button */
+	.dark-mode-toggle-container {
+		position: fixed;
+		top: 1.5rem;
+		right: 1.5rem;
+		z-index: 9999;
+		transition: all var(--transition-base);
+	}
+
+	@media (max-width: 640px) {
+		.dark-mode-toggle-container {
+			top: 1rem;
+			right: 1rem;
+		}
+
+		body {
 			display: flex;
 			flex-direction: column;
-			align-items: center;
-			justify-content: center;
 		}
+	}
+
+	/* Contenedor principal */
+	main {
+		width: 100%;
+		max-width: 100%;
+		margin: 0 auto;
 	}
 </style>

@@ -2,24 +2,38 @@
 import Section from "@/components/Section.astro";
 import CertGallery from "@/components/CertGallery.jsx";
 import { certificates } from "@cv";
-import { Image } from "astro:assets";
-import cert1 from "@/assets/img/web-certf.jpeg";
-import cert2 from "@/assets/img/js-certf.jpeg";
-import cert3 from "@/assets/img/react-certf.jpeg"; // Asegúrate de importar todas las imágenes que necesitas
-import cert4 from "@/assets/img/java-certf.png"; 
+import type { ImageMetadata } from "astro";
+
+// Cargamos todas las imágenes con metadata
+const images = import.meta.glob("../../assets/img/*", {
+  eager: true,
+  import: "default"
+}) as Record<string, ImageMetadata>;
+
+// Mapeamos filename → metadata
+const imageMap: Record<string, ImageMetadata> = {};
+
+for (const [path, data] of Object.entries(images)) {
+  const filename = path.split("/").pop(); // ejemplo "proyecto1.webp"
+  if (filename) imageMap[filename] = data;
+}
+
+const getImage = (filename: string) => {
+  return imageMap[filename]?.src ?? null;
+};
 
 
-// Asocia las imágenes a los objetos en el array `education`
-const certificatesWithImages = certificates.map((item, index) => {
-    return {
-        ...item,
-        imgSrc:
-            index === 0 ? cert1 :
-            index === 1 ? cert2 :
-            index === 2 ? cert3 :
-            cert4, // Agrega cert4 para el cuarto índice
-    };
+const certificatesWithImages = certificates.map((item) => {
+  const url = item.url ?? "";
+  const filename = String(url).split("/").pop();
+  const resolved = filename ? getImage(filename) : null;
+  return {
+    ...item,
+    imgSrc: resolved ?? url,
+  };
 });
+
+
 ---
 
 <Section title="Certificaciones">

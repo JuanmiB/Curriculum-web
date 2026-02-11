@@ -1,0 +1,144 @@
+---
+/**
+ * Toggle button para dark/light mode
+ * Usa React island para interactividad
+ */
+---
+
+<div id="theme-toggle-wrapper" class="theme-toggle-wrapper">
+  <button
+    id="theme-toggle"
+    type="button"
+    aria-label="Toggle dark mode"
+    class="theme-toggle-button"
+  >
+    <svg class="sun-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path
+        d="M10 3V1M10 19V17M17 10H19M1 10H3M15.657 4.343L17.071 2.929M2.929 17.071L4.343 15.657M15.657 15.657L17.071 17.071M2.929 2.929L4.343 4.343"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      ></path>
+      <circle cx="10" cy="10" r="4" fill="currentColor"></circle>
+    </svg>
+
+    <svg class="moon-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path
+        d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+        fill="currentColor"
+      ></path>
+    </svg>
+  </button>
+</div>
+
+<script>
+  import { isDarkMode, toggleDarkMode, initTheme } from '../stores/theme.js';
+
+  // Inicializar tema al cargar la página
+  initTheme();
+
+  // Configurar evento de click
+  const button = document.getElementById('theme-toggle');
+  if (button) {
+    button.addEventListener('click', () => {
+      toggleDarkMode();
+      updateButtonState();
+    });
+  }
+
+  // Actualizar estado visual del botón
+  function updateButtonState() {
+    const wrapper = document.getElementById('theme-toggle-wrapper');
+    if (wrapper) {
+      if (isDarkMode.get()) {
+        wrapper.classList.add('dark-mode');
+      } else {
+        wrapper.classList.remove('dark-mode');
+      }
+    }
+  }
+
+  // Sincronizar estado inicial
+  updateButtonState();
+
+  // Suscribirse a cambios
+  isDarkMode.subscribe(() => {
+    updateButtonState();
+  });
+</script>
+
+<style>
+  .theme-toggle-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .theme-toggle-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--color-neutral-100, #f4f4f5);
+    color: var(--color-neutral-900, #18181b);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .theme-toggle-button:hover {
+    background-color: var(--color-neutral-200, #e4e4e7);
+    transform: scale(1.05);
+  }
+
+  .theme-toggle-button:active {
+    transform: scale(0.95);
+  }
+
+  .theme-toggle-button:focus-visible {
+    outline: 2px solid var(--color-primary-500, #8b5cf6);
+    outline-offset: 2px;
+  }
+
+  .sun-icon,
+  .moon-icon {
+    position: absolute;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Light mode: mostrar sol */
+  .sun-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  .moon-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0);
+  }
+
+  /* Dark mode: mostrar luna */
+  .theme-toggle-wrapper.dark-mode .sun-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0);
+  }
+
+  .theme-toggle-wrapper.dark-mode .moon-icon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+
+  .theme-toggle-wrapper.dark-mode .theme-toggle-button {
+    background-color: var(--color-neutral-800, #27272a);
+    color: var(--color-neutral-50, #fafafa);
+  }
+
+  .theme-toggle-wrapper.dark-mode .theme-toggle-button:hover {
+    background-color: var(--color-neutral-700, #3f3f46);
+  }
+</style>

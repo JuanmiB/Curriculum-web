@@ -1,25 +1,74 @@
 ---
-const {title} = Astro.props
+interface Props {
+    title?: string;
+    id?: string;
+    animate?: boolean;
+    delay?: number;
+}
+
+const {
+    title,
+    id,
+    animate = true,
+    delay = 0
+} = Astro.props;
 ---
 
-<section>
-    {
-        title && <h2>{title}</h2>
-    }
+<section
+    id={id}
+    class="section-container"
+    data-animate={animate ? 'up' : null}
+    data-animate-delay={delay}
+>
+    {title && <h2 class="section-title">{title}</h2>}
     <slot/>
 </section>
 
 <style>
-    section{
+    .section-container {
         max-width: 700px;
         margin: 0 auto 10px;
         padding: 10px 20px;
+        transition: all var(--transition-base);
     }
 
-    h2{
-        margin-bottom:  8px;
+    /* Animación de entrada */
+    .section-container[data-animate] {
+        opacity: 0;
+    }
+
+    .section-container[data-animate].animate-visible {
+        opacity: 1;
+    }
+
+    .section-title {
+        margin-bottom: 8px;
         font-weight: 700;
         line-height: 1.5;
         font-size: 1.5rem;
+        color: var(--color-text);
+    }
+
+    @media (min-width: 640px) {
+        .section-container {
+            max-width: 750px;
+            padding: 20px 30px;
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            margin-bottom: 12px;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .section-container {
+            max-width: 900px;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+        }
     }
 </style>

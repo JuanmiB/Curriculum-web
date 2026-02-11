@@ -1,0 +1,76 @@
+---
+/**
+ * Wrapper component para secciones con animaciones de scroll
+ * Usa Intersection Observer para activar animaciones cuando entran en viewport
+ */
+import type { AnimationDirection } from '../utils/animations';
+
+interface Props {
+  direction?: AnimationDirection;
+  delay?: number;
+  className?: string;
+  id?: string;
+}
+
+const {
+  direction = 'up',
+  delay = 0,
+  className = '',
+  id,
+} = Astro.props;
+
+// Mapear dirección a clase CSS
+const animationClassMap: Record<string, string> = {
+  'up': 'animate-fade-in-up',
+  'down': 'animate-fade-in-down',
+  'left': 'animate-fade-in-left',
+  'right': 'animate-fade-in-right',
+  'fade': 'animate-fade-in',
+};
+
+const animationClass = animationClassMap[direction] || 'animate-fade-in-up';
+---
+
+<section
+  id={id}
+  class={`animated-section ${className}`}
+  data-animate={direction}
+  data-animate-delay={delay}
+>
+  <slot />
+</section>
+
+<style>
+  .animated-section {
+    width: 100%;
+  }
+
+  /* Elementos animados comienzan invisibles */
+  .animated-section[data-animate] {
+    opacity: 0;
+  }
+
+  /* Cuando se vuelven visibles, aplican la animación */
+  .animated-section[data-animate].animate-visible {
+    opacity: 1;
+  }
+</style>
+
+<script>
+  import { initScrollAnimations, prefersReducedMotion } from '../utils/animations';
+
+  // Inicializar animaciones cuando el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    // Si el usuario prefiere reducir movimiento, hacer elementos visibles inmediatamente
+    if (prefersReducedMotion()) {
+      const elements = document.querySelectorAll('[data-animate]');
+      elements.forEach((el) => {
+        el.classList.add('animate-visible');
+      });
+      return;
+    }
+
+    // Inicializar observador de scroll
+    initScrollAnimations('.animated-section[data-animate]');
+  });
+</script>
