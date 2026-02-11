@@ -45,7 +45,7 @@
   "certificates": [
     {
       "institution": "CoderHouse",
-      "url": "/assets/img/web-certf.jpeg",
+      "url": "web-certf.jpeg",
       "area": "Web Developer",
       "courses": [
         "DB1101 - Basic SQL"
@@ -53,7 +53,7 @@
     },
     {
       "institution": "CoderHouse",
-      "url": "/assets/img/js-certf.jpeg",
+      "url": "js-certf.jpeg",
       "area": "JavaScript Developer",
       "courses": [
         "DB1101 - Basic SQL"
@@ -61,7 +61,7 @@
     },
     {
       "institution": "CoderHouse",
-      "url": "/assets/img/react-certf.jpeg",
+      "url": "react-certf.jpeg",
       "area": "React Developer",
       "courses": [
         "DB1101 - Basic SQL"
@@ -69,7 +69,7 @@
     },
     {
       "institution": "CoderHouse",
-      "url": "/assets/img/java-certf.png",
+      "url": "java-certf.png",
       "area": "FullStack Java",
       "courses": [
         "DB1101 - Basic SQL"
@@ -110,20 +110,33 @@
       "CSS",
       "Tailwind",
       "React",
-      "NextJS"
+      "NextJS",
+      "Vite"
     ],
     "backend": [
       "NodeJs",
+      "Express",
       "Python"
     ],
     "databases": [
       "SQL",
+      "PostgreSQL",
+      "MySQL",
       "MongoDB",
       "Firebase"
     ],
     "versionControl": [
       "Git",
       "GitHub"
+    ],
+    "testing": [
+      "Playwright",
+      "Vitest"
+    ],
+    "deployment": [
+      "Vercel",
+      "Render",
+      "Netlify"
     ]
   },
   "languages": [
@@ -134,17 +147,21 @@
   ],
   "projects": [
     {
-      "name": "BienesRaices",
-      "description": "Aplicación web y móvil para la gestión de propiedades. Permite a los usuarios buscar, agregar, editar y eliminar propiedades, así como visualizar fotos y detalles relacionados con cada propiedad. Incluye funcionalidades de autenticación de usuarios, protección de rutas y carga de imágenes.",
+      "name": "BienesRaices Monorepo",
+      "description": "Plataforma fullstack de bienes raíces con arquitectura de monorepo. Frontend React + Vite, Backend Node.js + Express, PostgreSQL en producción. Incluye autenticación JWT, gestión de propiedades con imágenes (Cloudinary), búsqueda y filtros avanzados. Testing E2E con Playwright (90 test cases). Desplegado en Vercel (frontend) y Render (backend + BD).",
       "highlights": [
         "react",
         "nodejs",
+        "postgresql",
         "tailwind",
-        "mysql",
-        "servicios"
+        "monorepo",
+        "playwright",
+        "vercel",
+        "render"
       ],
-      "url": "https://bienesraices-react.netlify.app/",
-      "repository-url": "https://github.com/tuusuario/bienesraices",
+      "url": "https://bienesraices-monorepo-frontend.vercel.app/",
+      "repository-url": "https://github.com/JuanmiB/bienesraices-monorepo",
+      "api-url": "https://bienesraices-api.onrender.com",
       "image": "bienesraices.png"
     },
     {
