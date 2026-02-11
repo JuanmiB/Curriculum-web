@@ -8,7 +8,7 @@
     "phone": "(+54) 1139180630",
     "cv": "cv",
     "url": "",
-    "summary": "Desarrollador Frontend con conocimientos Backend cuyo foco está en la creación de aplicaciones web utilizando JavaScript, React y Node.js. Siempre estoy en busca de nuevos retos que me permitan expandir mis conocimientos, aportando soluciones adecuadas a los desafíos presentados. Busco trabajar en equipo donde la innovación, el crecimiento y la empatía constante sean valores fundamentales.",
+    "summary": "Desarrollador Full Stack con sólida formación en JavaScript, React, Node.js y MySQL, enfocado en construir aplicaciones funcionales, escalables y bien estructuradas. He desarrollado proyectos propios implementando autenticación con JWT, protección de rutas, carga de archivos y arquitectura modular. Trabajo integrando Inteligencia Artificial (Claude, ChatGPT, agentes y prompting avanzado) para optimizar procesos, mejorar calidad de código y acelerar la resolución de problemas.",
     "location": {
       "address": "Caseros, Buenos Aires",
       "postalCode": "1678",
@@ -105,38 +105,27 @@
     }
   ],
   "skills": {
+    "aiAgents": [
+      "Claude",
+      "Claude API",
+      "AI Agents",
+      "Prompt Engineering"
+    ],
     "frontend": [
-      "HTML",
-      "CSS",
-      "Tailwind",
       "React",
       "NextJS",
-      "Vite"
+      "Tailwind",
+      "Astro"
     ],
     "backend": [
       "NodeJs",
       "Express",
-      "Python"
+      "PostgreSQL"
     ],
-    "databases": [
-      "SQL",
-      "PostgreSQL",
-      "MySQL",
-      "MongoDB",
-      "Firebase"
-    ],
-    "versionControl": [
+    "tools": [
       "Git",
-      "GitHub"
-    ],
-    "testing": [
       "Playwright",
-      "Vitest"
-    ],
-    "deployment": [
-      "Vercel",
-      "Render",
-      "Netlify"
+      "Vercel"
     ]
   },
   "languages": [
