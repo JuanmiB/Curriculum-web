@@ -115,7 +115,7 @@ const categoryTitles: Record<string, string> = {
     border-radius: var(--radius-lg);
   }
 
-  .dark .skill-category.highlighted {
+  :global(.dark) .skill-category.highlighted {
     background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(6, 182, 212, 0.1));
     border-color: var(--color-primary-900);
   }
@@ -134,7 +134,7 @@ const categoryTitles: Record<string, string> = {
     font-size: 0.9375rem;
   }
 
-  .dark .skill-category.highlighted .category-title {
+  :global(.dark) .skill-category.highlighted .category-title {
     color: var(--color-primary-300);
   }
 
@@ -164,12 +164,12 @@ const categoryTitles: Record<string, string> = {
     transform: translateY(-1px);
   }
 
-  .dark .skill-badge {
+  :global(.dark) .skill-badge {
     background: var(--color-neutral-900);
     border-color: var(--color-neutral-800);
   }
 
-  .dark .skill-badge:hover {
+  :global(.dark) .skill-badge:hover {
     border-color: var(--color-neutral-600);
     background: var(--color-neutral-800);
   }
@@ -180,7 +180,7 @@ const categoryTitles: Record<string, string> = {
     border-color: var(--color-primary-300);
   }
 
-  .dark .skill-category.highlighted .skill-badge {
+  :global(.dark) .skill-category.highlighted .skill-badge {
     background: var(--color-neutral-900);
     border-color: var(--color-primary-800);
   }
