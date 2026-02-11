@@ -1,8 +1,8 @@
 {
   "basics": {
     "name": "Juan Miguel Bogado",
-    "label": "Desarrollador Trainee",
-    "small": "con conocimientos Backend",
+    "label": "Desarrollador Full Stack",
+    "small": "con conocimientos en Inteligencia Artificial",
     "image": "src/assets/img/avatar.png",
     "email": "bogadojuanmiguel@gmail.com",
     "phone": "(+54) 1139180630",
@@ -46,42 +46,22 @@
     {
       "institution": "CoderHouse",
       "url": "web-certf.jpeg",
-      "area": "Web Developer",
-      "courses": [
-        "DB1101 - Basic SQL"
-      ]
+      "area": "Web Developer"
     },
     {
       "institution": "CoderHouse",
       "url": "js-certf.jpeg",
-      "area": "JavaScript Developer",
-      "courses": [
-        "DB1101 - Basic SQL"
-      ]
+      "area": "JavaScript Developer"
     },
     {
       "institution": "CoderHouse",
       "url": "react-certf.jpeg",
-      "area": "React Developer",
-      "courses": [
-        "DB1101 - Basic SQL"
-      ]
+      "area": "React Developer"
     },
     {
-      "institution": "CoderHouse",
+      "institution": "Codo a Codo",
       "url": "java-certf.png",
-      "area": "FullStack Java",
-      "courses": [
-        "DB1101 - Basic SQL"
-      ]
-    }
-  ],
-  "awards": [
-    {
-      "title": "Award",
-      "date": "2014-11-01",
-      "awarder": "Company",
-      "summary": "There is no spoon."
+      "area": "FullStack Java"
     }
   ],
   "education": [
